@@ -1,0 +1,14 @@
+#navbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 300px;
+}
+#main-doc {
+    margin-left: 300px;
+}
+
+@media only screen and (maxx-width: 815px) {
+    /*Put navbar on the top of the page*/
+}

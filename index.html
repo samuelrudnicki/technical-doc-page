@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+        <title>Technical Documentation Page</title>
+
+        <link rel="stylesheet" href="/styles/styles.css">
+    </head>
+    <body>
+        <nav id="navbar">
+            <header>Python Control Flow</header>
+            <ul>
+                <li>
+                    <a class="nav-link" href="#More_Control_Flow_Tools">More Control Flow Tools</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#if_Statements">if Statements</a>            
+                </li>
+                <li>
+                    <a class="nav-link" href="#for_Statements">for Statements</a>
+                 </li>    
+                <li>
+                    <a class="nav-link" href="#The_range()_Function">The range() Function</a>
+                </li>    
+                <li>
+                    <a class="nav-link" href="#pass_Statements">pass Statements</a>
+                </li>
+            </ul>
+        </nav>
+        <main id="main-doc">
+            <section id="More_Control_Flow_Tools" class="main-section">
+                <header>More Control Flow Tools</header>
+                <article>
+                    <p>Besides the while statement just introduced, Python knows the usual control flow statements known from other languages, with some twists. The ones that will be presented are:</p>
+                    <ul>
+                        <li>if Statements</li>
+                        <li>for Statements</li>
+                        <li>The range() function</li>
+                        <li>pass Statements</li>
+                        <li>Nothing else, really.</li>
+                    </ul>
+                
+                </article>
+            </section>
+
+            <section id="if_Statements" class="main-section">
+                <header>
+                    if Statements
+                </header>
+                <article>
+                    <p>Perhaps the most well-known statement type is the if statement. For example:</p>
+                    <code>
+                        >>> x = int(input("Please enter an integer: "))
+                        Please enter an integer: 42
+                        >>> if x < 0:
+                        ...     x = 0
+                        ...     print('Negative changed to zero')
+                        ... elif x == 0:
+                        ...     print('Zero')
+                        ... elif x == 1:
+                        ...     print('Single')
+                        ... else:
+                        ...     print('More')
+                        ...
+                        More
+                    </code>
+                    <p>
+                        There can be zero or more elif parts, and the else part is optional. The keyword ‘elif‘ is short for ‘else if’, and is useful to avoid excessive indentation. An if ... elif ... elif ... sequence is a substitute for the switch or case statements found in other languages.
+                    </p>
+                </article>                
+            </section>
+
+            <section id="for_Statements" class="main-section">
+                <header>
+                    for Statements
+                </header>
+                <article>
+                    <p>The for statement in Python differs a bit from what you may be used to in C or Pascal. Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as C), Python’s for statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence. For example (no pun intended):</p>
+                    <code>
+                        >>> # Measure some strings:
+                        ... words = ['cat', 'window', 'defenestrate']
+                        >>> for w in words:
+                        ...     print(w, len(w))
+                        ...
+                        cat 3
+                        window 6
+                        defenestrate 12
+                    </code>
+                    <p>If you need to modify the sequence you are iterating over while inside the loop (for example to duplicate selected items), it is recommended that you first make a copy. Iterating over a sequence does not implicitly make a copy. The slice notation makes this especially convenient:</p>
+                    <code>
+                        >>> for w in words[:]:  # Loop over a slice copy of the entire list.
+                        ...     if len(w) > 6:
+                        ...         words.insert(0, w)
+                        ...
+                        >>> words
+                        ['defenestrate', 'cat', 'window', 'defenestrate']
+                    </code>
+                </article>
+            </section>
+
+            <section id="The_range()_Function" class="main-section">
+                <header>
+                    The range() Function
+                </header>
+                <article>
+                    <p>If you do need to iterate over a sequence of numbers, the built-in function range() comes in handy. It generates arithmetic progressions:</p>
+                    <code>
+                        >>> for i in range(5):
+                        ...     print(i)
+                        ...
+                        0
+                        1
+                        2
+                        3
+                        4
+                    </code>
+                    <p>The given end point is never part of the generated sequence; range(10) generates 10 values, the legal indices for items of a sequence of length 10. It is possible to let the range start at another number, or to specify a different increment (even negative; sometimes this is called the ‘step’):</p>
+                    <code>
+                        range(5, 10)
+                        5 through 9
+
+                        range(0, 10, 3)
+                        0, 3, 6, 9
+
+                        range(-10, -100, -30)
+                        -10, -40, -70
+                    </code>
+                    <p>To iterate over the indices of a sequence, you can combine range() and len() as follows:</p>
+                    <code>
+                        >>> a = ['Mary', 'had', 'a', 'little', 'lamb']
+                        >>> for i in range(len(a)):
+                        ...     print(i, a[i])
+                        ...
+                        0 Mary
+                        1 had
+                        2 a
+                        3 little
+                        4 lamb
+                    </code>
+                    <p>In most such cases, however, it is convenient to use the enumerate() function, see Looping Techniques.</p>
+                    <p>A strange thing happens if you just print a range:</p>
+                    <code>
+                        >>> print(range(10))
+                        range(0, 10)
+                    </code>
+                    <p>In many ways the object returned by range() behaves as if it is a list, but in fact it isn’t. It is an object which returns the successive items of the desired sequence when you iterate over it, but it doesn’t really make the list, thus saving space.</p>
+                    <p>We say such an object is iterable, that is, suitable as a target for functions and constructs that expect something from which they can obtain successive items until the supply is exhausted. We have seen that the for statement is such an iterator. The function list() is another; it creates lists from iterables:</p>
+                    <code>
+                        >>> list(range(5))
+                        [0, 1, 2, 3, 4]
+                    </code>
+                    <p>Later we will see more functions that return iterables and take iterables as argument.</p>
+                </article>
+            </section>
+
+            <section id="pass_Statements" class="main-section">
+                <header>
+                    pass Statements
+                </header>
+                <article>
+                    <p>The pass statement does nothing. It can be used when a statement is required syntactically but the program requires no action. For example:</p>
+                    <code>
+                        >>> while True:
+                        ...     pass  # Busy-wait for keyboard interrupt (Ctrl+C)
+                        ...
+                    </code>
+                    <p>This is commonly used for creating minimal classes:</p>
+                    <code>
+                        >>> class MyEmptyClass:
+                        ...     pass
+                        ...
+                    </code>
+                    <p>Another place pass can be used is as a place-holder for a function or conditional body when you are working on new code, allowing you to keep thinking at a more abstract level. The pass is silently ignored:</p>
+                    <code>
+                        >>> def initlog(*args):
+                        ...     pass   # Remember to implement this!
+                        ...
+                    </code>         
+                </article>
+            </section>
+        </main>
+    </body>
+</html>
