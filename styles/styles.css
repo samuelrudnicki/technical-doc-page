@@ -1,6 +1,7 @@
 html, body{
     font-family: "Open Sans", Arial, sans-serif;
     line-height: 1.5;
+    color: #4d4e53;
 }
 
 #navbar {
@@ -9,17 +10,44 @@ html, body{
     left: 0px;
     height: 100%;
     width: 300px;
+    background-color: #E4F0F5;
+}
+
+#navbar header {
+    background-color: #abdff4;
+    width: 100%;
+    font-weight: bold;
+    color: #4d4e53;
+    font-variant: small-caps;
+}
+#navbar ul{
+    list-style: none;
+}
+
+#navbar ul{
+    width: 100%;
+}
+#navbar ul li a{
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #4d4e53;
+}
+#navbar ul li a:hover{
+    font-weight: bold;
 }
 #main-doc {
     margin-left: 300px;
-}
-
-@media only screen and (maxx-width: 815px) {
-    /*Put navbar on the top of the page*/
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 header {
-    font-size: 1.5em;
+    font-size: 1.6em;
+    margin: 10px;
+
 }
 code {
     display: block;
@@ -31,14 +59,37 @@ code {
 }
 
 section article {
-    color: #4d4e53;
     font-size: 0.96em;
 }
 
 section article p{
     text-align: justify;
+    margin-left: 10px;
 }
 
-#main-doc {
-    padding: 20px;
+
+@media only screen and (max-width: 815px) {
+    /*Put navbar on the top of the page*/
+    html {
+        scroll-padding-top: 200px;
+    }
+    #navbar{
+        top:0;
+        max-height: 200px;
+        width: 98%;
+        padding: 0;
+        margin: 0;
+        z-index: 1;
+    }
+    #navbar ul{
+        height: 137px;
+        padding: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    #main-doc {
+        margin-left: 0px;
+        margin-top: 220px;
+    }
+
 }
